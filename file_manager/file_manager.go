@@ -96,8 +96,8 @@ func (f *FileManager) Write(blk *BlockId, p *Page) (int, error) {
 	return count, nil
 }
 
-// 返回的是包含多少个区块
-func (f *FileManager) size(fileName string) (uint64, error) {
+// Size 返回的是包含多少个区块
+func (f *FileManager) Size(fileName string) (uint64, error) {
 	file, err := f.getFile(fileName)
 	if err != nil {
 		return 0, err
@@ -113,7 +113,7 @@ func (f *FileManager) size(fileName string) (uint64, error) {
 }
 
 func (f *FileManager) Append(fileName string) (BlockId, error) {
-	newBlockNum, err := f.size(fileName)
+	newBlockNum, err := f.Size(fileName)
 	if err != nil {
 		return BlockId{}, err
 	}
